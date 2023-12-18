@@ -279,8 +279,15 @@ function formatTime(minutes, seconds) {
  *   reverseString('abcdef') => 'fedcba'
  *   reverseString('12345') => '54321'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  // throw new Error('Not implemented');
+  let i = -1;
+  let newStr = '';
+  while (i >= -str.length) {
+    newStr += str.at(i);
+    i -= 1;
+  }
+  return newStr;
 }
 
 /**
@@ -294,8 +301,10 @@ function reverseString(/* str */) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
+function orderAlphabetically(str) {
+  // throw new Error('Not implemented');
+  const arr = str.split('');
+  return arr.sort().join('');
 }
 
 /**
@@ -310,8 +319,9 @@ function orderAlphabetically(/* str */) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(str, substring) {
+  // throw new Error('Not implemented');
+  return str.includes(substring);
 }
 
 /**
@@ -328,8 +338,31 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  // throw new Error('Not implemented');
+  const arrVowels = [
+    'a',
+    'e',
+    'i',
+    'o',
+    'u',
+    'y',
+    'A',
+    'E',
+    'I',
+    'O',
+    'U',
+    'Y',
+  ];
+  let count = 0;
+  for (let i = 0; i < str.length; i += 1) {
+    for (let j = 0; j < arrVowels.length; j += 1) {
+      if (str[i] === arrVowels[j]) {
+        count += 1;
+      }
+    }
+  }
+  return count;
 }
 
 /**
