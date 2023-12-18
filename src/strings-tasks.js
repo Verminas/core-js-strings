@@ -503,8 +503,9 @@ function extractNameFromTemplate(value) {
  *   unbracketTag('<span>') => 'span'
  *   unbracketTag('<a>') => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  // throw new Error('Not implemented');
+  return str.replace(/<|>/g, '');
 }
 
 /**
@@ -522,8 +523,9 @@ function unbracketTag(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  // throw new Error('Not implemented');
+  return str.split(';');
 }
 
 /**
@@ -542,8 +544,32 @@ function extractEmails(/* str */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  // throw new Error('Not implemented');
+  let strNew = '';
+  const alp = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  const alpCipher = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
+  for (let i = 0; i < str.length; i += 1) {
+    for (let j = 0; j < alp.length; j += 1) {
+      if (str[i] === alp[j]) {
+        strNew += alpCipher[j];
+      }
+    }
+    switch (str[i]) {
+      case ' ':
+        strNew += ' ';
+        break;
+      case '?':
+        strNew += '?';
+        break;
+      case '!':
+        strNew += '!';
+        break;
+      default:
+        break;
+    }
+  }
+  return strNew;
 }
 
 /**
